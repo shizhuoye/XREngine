@@ -100,6 +100,9 @@ class RouterComp extends React.Component<{}, { hasError: boolean }> {
           {/* Editor Routes */}
           <Route path="/editor" component={EditorProtected} />
 
+
+          <Route path="/codeeditor" component={React.lazy(() => import('../pages/codeeditor/index'))} />
+
           <Route path="*" component={React.lazy(() => import('../pages/404'))} />
         </Switch>
       </Suspense>

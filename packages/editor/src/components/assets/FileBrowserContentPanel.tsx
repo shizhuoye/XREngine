@@ -15,6 +15,7 @@ import EditorEvents from '../../constants/EditorEvents'
 import { SourceManager } from '../../managers/SourceManager'
 import { CommandManager } from '../../managers/CommandManager'
 import { ProjectManager } from '../../managers/ProjectManager'
+import { MonacoEditor } from '../../pages/MonacoEditor'
 
 /**
  * FileBrowserPanel used to render view for AssetsPanel.
@@ -150,6 +151,7 @@ export default function FileBrowserContentPanel({ onSelectionChanged }) {
 
   return (
     <>
+    <MonacoEditor/>
       {/* @ts-ignore */}
       <InputGroup name="Project Name" label="Project Name">
         {/* @ts-ignore */}
