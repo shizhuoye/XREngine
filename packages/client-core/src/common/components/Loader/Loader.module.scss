@@ -72,3 +72,24 @@
   50% { background-position: 0% 50% }
   100% { background-position: 0% 0% }
 }
+
+.hidden {
+  animation: animation-hidden 2s linear normal;
+  animation-fill-mode: forwards;
+  -webkit-animation: animation-hidden 2s linear normal;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes animation-hidden {
+  0% { opacity: 1; visibility: inherit;}
+  50% { opacity: 1; visibility: inherit;}
+  75% { opacity: 0.5; visibility: inherit;}
+  100% { opacity: 0; visibility: hidden;}
+}
+
+.show {
+  visibility: inherit;
+  opacity: 1;
+  -webkit-transition: opacity 1s, visibility 1s;
+  transition: opacity 1s, visibility 1s;
+}

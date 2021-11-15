@@ -10,6 +10,21 @@ interface Props {
   Loader?: any
 }
 
+const loaderRendererCanvasId = 'loader-renderer-canvas'
+
+const canvasStyle = {
+  zIndex: 9999,
+  top: '0px',
+  left: '0px',
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+  WebkitUserSelect: 'none',
+  userSelect: 'none'
+} as React.CSSProperties
+
+const canvas = <canvas id={loaderRendererCanvasId} style={canvasStyle} />
+
 const LoadingScreen = (props: Props) => {
   const { Loader } = props
   const onBoardingStep = useAppState().onBoardingStep
@@ -49,16 +64,18 @@ const LoadingScreen = (props: Props) => {
     }
   }, [objectsToLoad])
 
-  if (!showProgressBar) return null
+  // if (!showProgressBar) return null
 
   return (
     <>
+      {/* <section className={`${styles.overlay} ${showProgressBar ? styles.show : styles.hidden}`}> */}
       <section className={styles.overlay}>
-        <div className={styles.imageOverlay}></div>
-        {Loader ? <Loader /> : <LottieLoader />}
-        <section className={styles.linearProgressContainer}>
+        <div className={styles.imageOverlay}>This is Rainbow Screen</div>
+        {canvas}
+        {/* {Loader ? <Loader /> : <LottieLoader />} */}
+        {/* <section className={styles.linearProgressContainer}>
           <span className={styles.loadingProgressInfo}>{loadingText}</span>
-        </section>
+        </section> */}
       </section>
     </>
   )
