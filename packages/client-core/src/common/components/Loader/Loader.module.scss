@@ -24,21 +24,41 @@
   }
 
   .linearProgressContainer{
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: fixed;
-    bottom: 0px;
-    height:70px;
+    height:100%;
     width: 100%;
-    text-align: center;
-    background-color: rgba(0,0,0,.8);
-    padding:25px;
-    .loadingProgressInfo{
-      color:#999;
+
+    .loadingText{
+      color: #d10d37;
       width: 100%;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
+      font-size: 4em;
+      font-weight: 500;
+    }
+    .loadingProgressInfo{
+      color:#fefefe;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      font-size: 8em;
+      font-weight: bolder;
+    }
+    .downloadingAssets{
+      color:#107ba5;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      text-align: center;
       font-size: 1.5em;
+      font-weight: bolder;
     }
   }
 

@@ -16,6 +16,8 @@
         "connecting": "Connecting to world...",
         "entering": "Entering world...",
         "loading": "Loading...",
+        "loadingText": "loading",
+        "downloadingAssets": "Downloading assets...",
         "objectRemaining": "{{count}} object remaining",
         "objectRemainingPlural": "{{count}} objects remaining"
     }

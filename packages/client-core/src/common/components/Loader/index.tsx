@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import styles from './Loader.module.scss'
 import LottieLoader from './LottieLoader'
 import { useEngineState } from '../../../world/services/EngineService'
+import ProgressBar from '../ProgressBar/index'
 
 interface Props {
   Loader?: any
@@ -24,6 +25,7 @@ const canvasStyle = {
 } as React.CSSProperties
 
 const canvas = <canvas id={loaderRendererCanvasId} style={canvasStyle} />
+let count = 1
 
 const LoadingScreen = (props: Props) => {
   const { Loader } = props
@@ -32,6 +34,7 @@ const LoadingScreen = (props: Props) => {
   const [loadingText, setLoadingText] = useState('')
   const { t } = useTranslation()
   const objectsToLoad = useEngineState().loadingProgress.value
+  const [percentage, setPercentage] = useState(0)
 
   useEffect(() => {
     switch (onBoardingStep.value) {
@@ -55,6 +58,17 @@ const LoadingScreen = (props: Props) => {
   }, [onBoardingStep.value])
 
   useEffect(() => {
+    const timer = setInterval(getPercentage, 10)
+
+    function getPercentage() {
+      if (count > 100) {
+        clearInterval(timer)
+        return
+      } else {
+        setPercentage(count++)
+      }
+    }
+
     if (onBoardingStep.value === GeneralStateList.SCENE_LOADING) {
       setLoadingText(
         t('common:loader.' + (objectsToLoad > 1 ? 'objectRemainingPlural' : 'objectRemaining'), {
@@ -64,18 +78,18 @@ const LoadingScreen = (props: Props) => {
     }
   }, [objectsToLoad])
 
-  // if (!showProgressBar) return null
+  if (!showProgressBar) return null
 
   return (
     <>
-      {/* <section className={`${styles.overlay} ${showProgressBar ? styles.show : styles.hidden}`}> */}
       <section className={styles.overlay}>
         <div className={styles.imageOverlay}>This is Rainbow Screen</div>
-        {canvas}
-        {/* {Loader ? <Loader /> : <LottieLoader />} */}
-        {/* <section className={styles.linearProgressContainer}>
-          <span className={styles.loadingProgressInfo}>{loadingText}</span>
-        </section> */}
+        <section className={styles.linearProgressContainer}>
+          <span className={styles.loadingText}>{t('common:loader.loadingText')}</span>
+          <span className={styles.loadingProgressInfo}>{percentage}%</span>
+          <ProgressBar percentage={percentage}></ProgressBar>
+          <span className={styles.downloadingAssets}>{t('common:loader.downloadingAssets')}</span>
+        </section>
       </section>
     </>
   )

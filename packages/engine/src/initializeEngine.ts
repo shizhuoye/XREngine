@@ -116,7 +116,7 @@ const registerClientSystems = async (options: Required<InitializeOptions>, canva
   }
 
   //Loading
-  registerSystem(SystemUpdateType.FIXED, import('./scene/systems/SceneLoadingSystem'))
+  // registerSystem(SystemUpdateType.UPDATE, import('./scene/systems/SceneLoadingSystem'))
 
   // Input
   registerSystem(SystemUpdateType.UPDATE, import('./xr/systems/XRSystem'))

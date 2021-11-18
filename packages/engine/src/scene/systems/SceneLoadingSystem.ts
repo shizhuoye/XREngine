@@ -23,7 +23,7 @@ export class LoadingRenderer {
 
     const loaderRendererCanvasId = 'loader-renderer-canvas'
     const canvasElement = document.getElementById(loaderRendererCanvasId) as any
-    const url = 'https://localhost:8642/projects/default-project/assets/loadingscene.glb'
+    const url = 'https://localhost:8642/projects/default-project/assets/collisioncube.glb'
     this.scene = new Scene()
     this.camera = new PerspectiveCamera(75)
     this.renderer = new WebGLRenderer({
